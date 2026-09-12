@@ -2,6 +2,20 @@
 
 Windows 托盘静默启动器 for [llama.cpp](https://github.com/ggerganov/llama.cpp) 的 `llama-server.exe`。
 
+[![CI](https://github.com/Wjavan/llama-server-tray/workflows/Validate/badge.svg)](https://github.com/Wjavan/llama-server-tray/actions)
+[![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+⭐ 如果这个项目对你有帮助，欢迎点 Star ⭐
+
+## ⬇️ 下载
+
+最新版本：[![Latest Release](https://img.shields.io/github/v/release/Wjavan/llama-server-tray)](https://github.com/Wjavan/llama-server-tray/releases/latest)
+
+**Windows 用户直接下载**：
+- [llama-server-tray.exe](https://github.com/Wjavan/llama-server-tray/releases/latest) - 打包好的可执行文件
+- 配套 [CHANGELOG](CHANGELOG.md)
+
 ## 特性
 
 - 🔇 **全程静默**：`.pyw` + `pythonw.exe` + `CREATE_NO_WINDOW`，无任何控制台窗口
@@ -74,7 +88,7 @@ py -m pip install pystray pillow
    - 未找到版本文件夹（检查文件夹命名 `llama-b*-bin-win-cuda-*`）
    - 模型目录为空或路径错误
    - 端口被占用
-3. **频繁自动重启** → 连续 3 次快速失败后会停止重启并弹窗，需手动点“重启服务”或修复后重启托盘程序
+3. **频繁自动重启** → 连续 3 次快速失败后会停止重启并弹窗，需手动点"重启服务"或修复后重启托盘程序
 
 ## 打包为单文件 .exe（可选）
 
@@ -85,6 +99,22 @@ pyinstaller --noconsole --onefile --name llama-server-tray llama_server_tray.pyw
 
 生成的 `dist/llama-server-tray.exe` 可直接分发（无需安装 Python）。
 
+## 测试最新构建（自动发布）
+
+仓库打 tag 后会自动构建并发布 Release https://github.com/Wjavan/llama-server-tray/releases/latest
+
+```bash
+# 本地测试
+git tag v1.0.0
+git push origin v1.0.0
+
+# 会自动触发构建并上传到 Releases（约 3-5 分钟）
+```
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！针对初学者也设有 [Good First Issue](https://github.com/Wjavan/llama-server-tray/labels/good%20first%20issue) 标签。
+
 ## 许可证
 
-MIT License
+MIT License - 详见 [LICENSE](LICENSE) 文件
