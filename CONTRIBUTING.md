@@ -1,72 +1,74 @@
-# 贡献指南
+# Contributing Guide
 
-非常感谢你对 `llama-server-tray` 的关注！欢迎提交 Issue 和 PR。
+Thank you for your interest in `llama-server-tray`! Contributions are welcome.
 
-## 如何贡献
+## How to Contribute
 
-### 报告问题
+### Reporting Issues
 
-1. 访问 [Issues](https://github.com/Wjavan/llama-server-tray/issues)
-2. 点击 "New Issue"
-3. 使用模板：
-   - **🐛 Bug 报告**：描述问题 + 环境信息 + 复现步骤
-   - **✨ 新功能请求**：说明用途 + 理想用法
-   - **📖 文档改进**：指出文档哪里不清楚
-   - **🤔 Other**：其他想法
+1. Visit [Issues](https://github.com/Wjavan/llama-server-tray/issues)
+2. Click "New Issue"
+3. Use the templates:
+   - **🐛 Bug Report**: Describe the problem + environment info + steps to reproduce
+   - **✨ Feature Request**: Explain what you want + expected usage
+   - **📖 Documentation**: Point out unclear documentation
+   - **🤔 Other**: Other ideas
 
-### 提交 Pull Request
+### Submitting Pull Requests
 
-1. Fork 本仓库
-2. 创建特性分支：`git checkout -b feature/your-feature`
-3. 提交修改：`git commit -m "feat: your feature description"`
-4. Push 分支：`git push origin feature/your-feature`
-5. 提交 PR 到 `main` 分支
+1. Fork this repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit changes: `git commit -m "feat: your feature description"`
+4. Push branch: `git push origin feature/your-feature`
+5. Submit PR to `main` branch
 
-#### Commit 消息规范
+#### Commit Message Convention
 
-- `feat: ...` - 新功能
-- `fix: ...` - 修复 bug
-- `docs: ...` - 文档更新
-- `refactor: ...` - 重构（非功能改进）
-- `chore: ...` - 构建/工具链更新
+- `feat: ...` - New feature
+- `fix: ...` - Bug fix
+- `docs: ...` - Documentation update
+- `refactor: ...` - Code refactoring (no functional change)
+- `chore: ...` - Build/tooling update
 
-## 开发环境
+## Development Setup
 
-### 本地安装
+### Local Installation
 
 ```bash
 git clone https://github.com/Wjavan/llama-server-tray.git
 cd llama-server-tray
 
-# 安装依赖
+# Install dependencies
 py -m pip install pystray pillow
 
-# 运行启动器
+# Run the launcher
 pythonw llama_server_tray.pyw
 ```
 
-### 打包测试
+### Build Test
 
 ```bash
 py -m pip install pyinstaller
 pyinstaller --noconsole --onefile --name llama-server-tray llama_server_tray.pyw
 ```
 
-## 开发准则
+## Development Guidelines
 
-- **测试边界情况**：Windows 不同版本、不同 llama.cpp 版本
-- **保持向后兼容**：不要删除现有配置项
-- **更新文档**：改代码时同步更新 README
-- **保持简洁**：最小改动解决问题
+- **Test edge cases**: Different Windows versions, different llama.cpp versions
+- **Maintain backward compatibility**: Don't remove existing configuration options
+- **Update documentation**: Update README when changing code
+- **Keep it simple**: Minimal changes to solve problems
 
-## 标签说明
+## Labels Explanation
 
-- `good first issue` - 适合新手
-- `help wanted` - 还在招帮手
-- `bug` - 问题
-- `enhancement` - 新功能
+- `good first issue` - Suitable for newcomers
+- `help wanted` - Still looking for help
+- `bug` - Something isn't working
+- `enhancement` - New feature request
 
-## 问题？
+Want to make a PR? Pick an issue tagged with `good first issue`!
+
+## Questions?
 
 - GitHub Discussions: https://github.com/Wjavan/llama-server-tray/discussions
-- 提 issue: https://github.com/Wjavan/llama-server-tray/issues
+- Open an issue: https://github.com/Wjavan/llama-server-tray/issues
