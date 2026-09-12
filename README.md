@@ -1,119 +1,119 @@
 # llama-server-tray
 
-Windows 托盘静默启动器 for [llama.cpp](https://github.com/ggerganov/llama.cpp) 的 `llama-server.exe`。
+A silent tray launcher for [llama.cpp](https://github.com/ggerganov/llama.cpp)'s `llama-server.exe` on Windows.
 
 [![CI](https://github.com/Wjavan/llama-server-tray/workflows/Validate/badge.svg)](https://github.com/Wjavan/llama-server-tray/actions)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-⭐ 如果这个项目对你有帮助，欢迎点 Star ⭐
+⭐ If this project helps you, please give it a Star! ⭐
 
-## ⬇️ 下载
+## ⬇️ Download
 
-最新版本：[![Latest Release](https://img.shields.io/github/v/release/Wjavan/llama-server-tray)](https://github.com/Wjavan/llama-server-tray/releases/latest)
+Latest version: [![Latest Release](https://img.shields.io/github/v/release/Wjavan/llama-server-tray)](https://github.com/Wjavan/llama-server-tray/releases/latest)
 
-**Windows 用户直接下载**：
-- [llama-server-tray.exe](https://github.com/Wjavan/llama-server-tray/releases/latest) - 打包好的可执行文件
-- 配套 [CHANGELOG](CHANGELOG.md)
+**Windows users can download directly**:
+- [llama-server-tray.exe](https://github.com/Wjavan/llama-server-tray/releases/latest) - Pre-packaged executable
+- See also [CHANGELOG](CHANGELOG.md)
 
-## 特性
+## Features
 
-- 🔇 **全程静默**：`.pyw` + `pythonw.exe` + `CREATE_NO_WINDOW`，无任何控制台窗口
-- 🔁 **自动重启**：服务异常退出自动重启，连续失败保护（默认 3 次）
-- 🔒 **单实例锁**：端口锁防止重复启动
-- 📝 **双日志**：托盘程序日志 + llama-server 输出日志
-- 🖱️ **托盘菜单**：查看状态、打开日志、手动重启、退出
-- ⚙️ **开箱即用**：放到版本目录同级，双击即跑
+- 🔇 **Silent operation** - No console window (`pythonw.exe` + `CREATE_NO_WINDOW`)
+- 🔁 **Auto-restart** - Automatically restarts on failure (stops after 3 consecutive failures)
+- 🔒 **Single instance** - Port-based lock prevents duplicate launches
+- 📝 **Dual logging** - Tray log + llama-server output log
+- 🖱️ **Tray menu** - View status, open logs, restart, exit
+- ⚙️ **Ready to use** - Place in same directory and double-click to run
 
-## 目录结构
+## Directory Structure
 
 ```
 llama-server-tray/
-├── llama-b5560-bin-win-cuda-12.4/   # llama.cpp 发布包（自行下载解压）
+├── llama-b5560-bin-win-cuda-12.4/   # llama.cpp release package (download & extract)
 │   └── llama-server.exe
-├── Models/                          # 模型文件目录（自建）
+├── Models/                          # Model directory (create yourself)
 │   └── your-model.gguf
-├── llama_server_tray.pyw            # 本启动器（双击运行）
-├── llama_tray.log                   # 托盘程序日志（自动生成）
-└── llama_server.log                 # llama-server 输出日志（自动生成）
+├── llama_server_tray.pyw            # Launcher (double-click to run)
+├── llama_tray.log                   # Tray program log (auto-generated)
+└── llama_server.log                 # llama-server log (auto-generated)
 ```
 
-## 快速开始
+## Quick Start
 
-### 1. 准备 llama-server
+### 1. Prepare llama-server
 
-从 [llama.cpp Releases](https://github.com/ggerganov/llama.cpp/releases) 下载对应 CUDA 版本的 `llama-b*-bin-win-cuda-*.zip`，解压到本脚本**同级目录**。
+Download the CUDA build `llama-b*-bin-win-cuda-*.zip` from [llama.cpp Releases](https://github.com/ggerganov/llama.cpp/releases) and extract it **to the same directory** as this script (folder name format: `llama-b5560-bin-win-cuda-12.4`).
 
-### 2. 准备模型
+### 2. Prepare models
 
-在脚本同级目录创建 `Models` 文件夹，放入 `.gguf` 模型文件。
+Create a `Models` folder next to the script and place your `.gguf` model files inside.
 
-### 3. 安装依赖（仅首次）
+### 3. Install dependencies (first time only)
 
 ```bash
 py -m pip install pystray pillow
 ```
 
-### 4. 运行
+### 4. Run
 
-**双击 `llama_server_tray.pyw`** 即可（或命令行：`pythonw llama_server_tray.pyw`）。
+**Double-click `llama_server_tray.pyw`** or run from command line: `pythonw llama_server_tray.pyw`
 
-右下角托盘区出现青色圆环图标 → 右键可操作。
+A cyan ring icon should appear in the system tray → right-click to access menu.
 
-## 配置
+## Configuration
 
-编辑 `llama_server_tray.pyw` 顶部 **配置区**：
+Edit the **Configuration Section** at the top of `llama_server_tray.pyw`:
 
-| 变量 | 默认值 | 说明 |
+| Variable | Default | Description |
 |------|--------|------|
-| `MODELS_DIR` | `./Models` | 模型目录路径 |
-| `SERVER_PORT` | `8080` | 服务监听端口 |
-| `CTX_SIZE` | `65536` | 上下文大小（`--ctx-size`） |
-| `AUTO_RESTART` | `True` | 异常退出是否自动重启 |
-| `MAX_FAIL_STREAK` | `3` | 连续快速失败阈值 |
-| `LOCK_PORT` | `45679` | 单实例锁端口（避免冲突即可） |
+| `MODELS_DIR` | `./Models` | Model directory path |
+| `SERVER_PORT` | `8080` | Server listening port |
+| `CTX_SIZE` | `65536` | Context size (`--ctx-size`) |
+| `AUTO_RESTART` | `True` | Auto-restart on failure |
+| `MAX_FAIL_STREAK` | `3` | Failure threshold before stopping |
+| `LOCK_PORT` | `45679` | Single-instance lock port |
 
-## 托盘菜单
+## Tray Menu
 
-- **LLaMA 服务：运行中 (端口 8080)** — 状态显示（不可点击）
-- **打开托盘日志** — 查看启动器自身日志
-- **打开服务日志** — 查看 llama-server 完整输出（排错首选）
-- **重启服务** — 手动重启 llama-server（重置失败计数）
-- **退出** — 停止服务并退出托盘程序
+- **LLaMA Server: Running (port 8080)** — Status display (not clickable)
+- **Open Tray Log** — View launcher's own log
+- **Open Server Log** — View full llama-server output (preferred for debugging)
+- **Restart Service** — Manually restart llama-server (resets failure count)
+- **Exit** — Stop server and quit tray
 
-## 故障排查
+## Troubleshooting
 
-1. **双击没反应** → 查看 `llama_tray.log`，通常是缺 `pystray`/`pillow`
-2. **启动失败** → 查看 `llama_server.log`，常见原因：
-   - 未找到版本文件夹（检查文件夹命名 `llama-b*-bin-win-cuda-*`）
-   - 模型目录为空或路径错误
-   - 端口被占用
-3. **频繁自动重启** → 连续 3 次快速失败后会停止重启并弹窗，需手动点"重启服务"或修复后重启托盘程序
+1. **Nothing happens on double-click** → Check `llama_tray.log`, usually missing `pystray`/`pillow`
+2. **Startup fails** → Check `llama_server.log`, common causes:
+   - Version folder not found (check naming: `llama-b*-bin-win-cuda-*`)
+   - Empty or wrong model directory
+   - Port already in use
+3. **Frequent auto-restart** → After 3 quick failures, auto-restart stops and shows a dialog. Click "Restart Service" in tray or fix and relaunch the tray program
 
-## 打包为单文件 .exe（可选）
+## Build standalone .exe (optional)
 
 ```bash
 py -m pip install pyinstaller
 pyinstaller --noconsole --onefile --name llama-server-tray llama_server_tray.pyw
 ```
 
-生成的 `dist/llama-server-tray.exe` 可直接分发（无需安装 Python）。
+Generated `dist/llama-server-tray.exe` can be distributed without Python installation.
 
-## 测试最新构建（自动发布）
+## Testing new builds (auto-released)
 
-仓库打 tag 后会自动构建并发布 Release https://github.com/Wjavan/llama-server-tray/releases/latest
+Pushing a tag will trigger automatic build and release: https://github.com/Wjavan/llama-server-tray/releases/latest
 
 ```bash
 git tag v1.0.0
 git push origin v1.0.0
 
-# 会自动触发构建并上传到 Releases（约 3-5 分钟）
+# Automatically triggers build and uploads to Releases (about 3-5 minutes)
 ```
 
-## 贡献
+## Contributing
 
-欢迎提交 Issue 和 Pull Request！针对初学者也设有 [Good First Issue](https://github.com/Wjavan/llama-server-tray/labels/good%20first%20issue) 标签。
+Contributions are welcome! Check out [Good First Issue](https://github.com/Wjavan/llama-server-tray/labels/good%20first%20issue) if you're new.
 
-## 许可证
+## License
 
-MIT License - 详见 [LICENSE](LICENSE) 文件
+MIT License - See [LICENSE](LICENSE) for details.
