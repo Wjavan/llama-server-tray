@@ -8,38 +8,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v1.0.0] - 2026-09-12
 
 ### Added
-- 首次发布
-- 静默托盘启动器，全程无控制台窗口
-- 自动重启机制（连续失败保护）
-- 单实例锁防止重复启动
-- 双日志系统（托盘日志 + 服务日志）
-- 托盘菜单（查看状态、打开日志、重启、退出）
-- PyInstaller 打包支持
-- SHA256 校验文件生成
-- GitHub Actions CI/CD 自动构建
-- MIT License 开源协议
+- Initial release
+- Silent tray launcher with no console window
+- Auto-restart mechanism with failure protection (3 consecutive failures)
+- Single-instance lock to prevent duplicate launches
+- Dual logging system (tray log + server log)
+- Tray context menu (status, logs, restart, exit)
+- PyInstaller packaging support
+- SHA256 checksum generation for releases
+- GitHub Actions CI/CD for automated builds
+- MIT License
 
 ### Changed
-- 无
+- None
 
 ### Deprecated
-- 无
+- None
 
 ### Removed
-- 无
+- None
 
 ### Fixed
-- Linux CI 下 .pyw 导入测试问题（改用 py_compile 语法检查）
+- Linux CI `import` test failure with `.pyw` extension (now uses `py_compile` syntax check only)
 
 ### Security
-- 无
+- None
 
 ---
 
 ## [Unreleased]
 ### Planned
-- 支持命令行参数配置（环境变量优先）
-- 支持自定义托盘图标
-- 支持多模型切换
-- 添加健康检查端点
-- 增加更多错误提示和日志级别选项
+- Command-line argument configuration support
+- Customizable tray icon
+- Multi-model switching support
+- Health check endpoint
+- Additional error messages and log level options
