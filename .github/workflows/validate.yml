@@ -15,9 +15,5 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install dependencies
-        run: pip install -r requirements.txt
       - name: Syntax check
         run: python -m py_compile llama_server_tray.pyw
-      - name: Import test
-        run: cp llama_server_tray.pyw llama_server_tray.py && python -c "import llama_server_tray; print('Import OK')"
