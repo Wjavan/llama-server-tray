@@ -33,7 +33,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      signing: write
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -47,9 +46,7 @@ jobs:
             dist/llama-server-tray.exe
             dist/llama-server-tray.exe.sha256
           generate_release_notes: true
-          generate_git_release_notes: true
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB几个月之态开门: ${{ secrets.GH_RELEASE Female
