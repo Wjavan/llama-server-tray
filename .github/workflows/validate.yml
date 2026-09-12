@@ -20,4 +20,4 @@ jobs:
       - name: Syntax check
         run: python -m py_compile llama_server_tray.pyw
       - name: Import test
-        run: python -c "import importlib.util, sys; spec = importlib.util.spec_from_file_location('llama_server_tray', 'llama_server_tray.pyw'); mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); print('Import OK, main:', hasattr(mod, 'main'))"
+        run: cp llama_server_tray.pyw llama_server_tray.py && python -c "import llama_server_tray; print('Import OK')"
