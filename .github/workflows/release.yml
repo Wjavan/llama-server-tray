@@ -18,17 +18,22 @@ jobs:
         run: pip install -r requirements.txt pyinstaller
       - name: Build executable
         run: pyinstaller --noconsole --onefile --name llama-server-tray llama_server_tray.pyw
+      - name: Generate SHA256 checksum
+        run: sha256sum dist/llama-server-tray.exe > dist/llama-server-tray.exe.sha256
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: llama-server-tray-windows
-          path: dist/llama-server-tray.exe
+          path: |
+            dist/llama-server-tray.exe
+            dist/llama-server-tray.exe.sha256
 
   release:
     needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      signing: write
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -38,5 +43,13 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/llama-server-tray.exe
+          files: |
+            dist/llama-server-tray.exe
+            dist/llama-server-tray.exe.sha256
           generate_release_notes: true
+          generate_git_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB几个月之态开门: ${{ secrets.GH_RELEASE Female
