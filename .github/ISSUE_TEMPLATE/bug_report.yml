@@ -1,57 +1,57 @@
-name: 🐛 Bug 报告
-description: 报告一个 bug
+name: 🐛 Bug Report
+description: Report a bug
 title: "[Bug]: "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        感谢提交 bug 报告！请尽量填写以下信息。
+        Thanks for taking the time to fill out this bug report!
   - type: input
     id: version
     attributes:
-      label: llama.cpp 版本
-      description: 例如 llama-b5560-bin-win-cuda-12.4
+      label: llama.cpp Version
+      description: e.g., llama-b5560-bin-win-cuda-12.4
       placeholder: llama-b5560-bin-win-cuda-12.4
     validations:
       required: false
   - type: input
     id: os
     attributes:
-      label: 操作系统版本
+      label: Operating System
       placeholder: Windows 11 23H2
     validations:
       required: true
   - type: textarea
     id: description
     attributes:
-      label: 问题描述
-      description: 清晰描述发生了什么
+      label: Describe the Bug
+      description: A clear and concise description of what the bug is
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
-      label: 复现步骤
-      description: 如何一步步复现该问题
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
       placeholder: |
-        1. 双击 llama_server_tray.pyw
-        2. 右键托盘图标 -> 打开服务日志
+        1. Double-click llama_server_tray.pyw
+        2. Right-click tray icon -> Open Server Log
         3. ...
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: 日志输出
-      description: 粘贴 llama_tray.log 或 llama_server.log 中的相关片段
+      label: Logs
+      description: Paste relevant snippets from llama_tray.log or llama_server.log
       render: shell
     validations:
       required: false
   - type: checkboxes
     id: confirm
     attributes:
-      label: 确认事项
+      label: Confirmation
       options:
-        - label: 我已安装 pystray 和 pillow
-        - label: 我已检查模型目录和版本目录结构
+        - label: I have installed pystray and pillow
+        - label: I have checked the model directory and version folder structure
