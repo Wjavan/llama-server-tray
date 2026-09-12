@@ -42,7 +42,7 @@ llama-server-tray/
 
 ### 1. 准备 llama-server
 
-从 [llama.cpp Releases](https://github.com/ggerganov/llama.cpp/releases) 下载对应 CUDA 版本的 `llama-b*-bin-win-cuda-*.zip`，解压到本脚本**同级目录**（文件夹名形如 `llama-b5560-bin-win-cuda-12.4`）。
+从 [llama.cpp Releases](https://github.com/ggerganov/llama.cpp/releases) 下载对应 CUDA 版本的 `llama-b*-bin-win-cuda-*.zip`，解压到本脚本**同级目录**。
 
 ### 2. 准备模型
 
@@ -104,7 +104,6 @@ pyinstaller --noconsole --onefile --name llama-server-tray llama_server_tray.pyw
 仓库打 tag 后会自动构建并发布 Release https://github.com/Wjavan/llama-server-tray/releases/latest
 
 ```bash
-# 本地测试
 git tag v1.0.0
 git push origin v1.0.0
 
