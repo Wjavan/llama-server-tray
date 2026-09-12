@@ -1,0 +1,57 @@
+name: 🐛 Bug 报告
+description: 报告一个 bug
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢提交 bug 报告！请尽量填写以下信息。
+  - type: input
+    id: version
+    attributes:
+      label: llama.cpp 版本
+      description: 例如 llama-b5560-bin-win-cuda-12.4
+      placeholder: llama-b5560-bin-win-cuda-12.4
+    validations:
+      required: false
+  - type: input
+    id: os
+    attributes:
+      label: 操作系统版本
+      placeholder: Windows 11 23H2
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 清晰描述发生了什么
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 如何一步步复现该问题
+      placeholder: |
+        1. 双击 llama_server_tray.pyw
+        2. 右键托盘图标 -> 打开服务日志
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志输出
+      description: 粘贴 llama_tray.log 或 llama_server.log 中的相关片段
+      render: shell
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认事项
+      options:
+        - label: 我已安装 pystray 和 pillow
+        - label: 我已检查模型目录和版本目录结构
